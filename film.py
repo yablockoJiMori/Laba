@@ -51,14 +51,14 @@ def film_read_from(stream, line):
 def film_write_to(film, stream):
     match film.key:
         case TypeFilm.game_film:
-            stream.write(f"This is a game movie.\n"
-                         f"\tTitle: {film.title}\n")
+            stream.write(f"Игровое кино.\n"
+                         f"\tНазвание: {film.title}\n")
             game_film_write_to(film.obj, stream)
 
         case TypeFilm.cartoon:
-            stream.write(f"This is a cartoon.\n"
-                         f"\tTitle: {film.title}\n")
+            stream.write(f"Мультфильм.\n"
+                         f"\tНазвание: {film.title}\n")
             cartoon_write_to(film.obj, stream)
 
         case _:
-            stream.write("Incorrect film!\n")
+            stream.write("Некорректный фильм!\n")

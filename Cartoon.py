@@ -24,4 +24,15 @@ def cartoon_read_from(film: Cartoon, stream):
 
 
 def cartoon_write_to(film: Cartoon, stream):
-    stream.write(f"\tWay to create: {film.way_to_create.name}\n")
+    k = film.way_to_create
+    stream.write(f"\tСпособ создания: ")
+    match k:
+        case WayToCreate.drawn:
+            stream.write(f"Нарисованный\n")
+        case WayToCreate.puppet:
+            stream.write(f"Кукольный \n")
+        case WayToCreate.plasticine:
+            stream.write(f"Пластилиновый\n")
+        case _:
+            return 0
+

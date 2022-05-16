@@ -17,19 +17,19 @@ if __name__ == "__main__":
     input_file = open(sys.argv[1], "r", encoding="utf-8")
     output_file = open(sys.argv[2], "w", encoding="utf-8")
 
-    print("Start")
+    print("Старт")
 
     container = DList()
     dlist_read_from(container, input_file)
 
-    print("Filled container.")
+    print("Файл записан.")
     dlist_write_to(container, output_file)
 
     dlist_clear(container)
-    print("Empty container.")
+    print("Контейнер отчищен.")
 
     dlist_write_to(container, output_file)
-    print("Stop")
+    print("Стоп")
 
     input_file.close()
     output_file.close()

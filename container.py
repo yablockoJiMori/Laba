@@ -42,7 +42,7 @@ def dlist_read_from(dlist: DList, stream):
 
 
 def dlist_write_to(dlist: DList, stream):
-    stream.write(f"Container contents {dlist.size} elements.\n")
+    stream.write(f"В контейнере {dlist.size} элементов.\n")
 
     current_item = dlist.head
     if dlist.size != 0:
