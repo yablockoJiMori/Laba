@@ -40,6 +40,15 @@ def dlist_clear(dlist: DList):
     dlist.size = 0
 
 
+def num_vowels(string) -> int:
+    vowels = set("aeiouауоыиэяюёеAEIOUАУОЫИЭЯЮЁЕ")
+    amount = 0
+    for letter in string:
+        if letter in vowels:
+            amount += 1
+    return amount
+
+
 def dlist_read_from(dlist: DList, stream):
     while line := stream.readline():
         item = film_read_from(stream, line)
@@ -52,7 +61,9 @@ def dlist_write_to(dlist: DList, stream):
     current_item = dlist.head
     if dlist.size != 0:
         film_write_to(current_item.data, stream)
+        stream.write(f"\tКоличество гласных: {num_vowels(current_item.data.title)}\n")
         current_item = current_item.next
         while current_item is not dlist.head:
             film_write_to(current_item.data, stream)
+            stream.write(f"\tКоличество гласных: {num_vowels(current_item.data.title)}\n")
             current_item = current_item.next
