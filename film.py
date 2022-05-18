@@ -52,7 +52,6 @@ def film_read_from(stream, line):
             film.key = TypeFilm.documentary
             film.obj = Documentary()
             documentary_read_from(film.obj, stream)
-            return film
 
         case _:
             return 0
