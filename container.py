@@ -67,3 +67,17 @@ def dlist_write_to(dlist: DList, stream):
             film_write_to(current_item.data, stream)
             stream.write(f"\tКоличество гласных: {num_vowels(current_item.data.title)}\n")
             current_item = current_item.next
+
+
+def match(first, second) -> bool:
+    return num_vowels(first.title) < num_vowels(second.title)
+
+
+def dlist_sort(dlist: DList):
+    for i in range(dlist.size):
+        curr_node = dlist.head
+        while curr_node.next != dlist.head:
+            next_node = curr_node.next
+            if match(curr_node.data, next_node.data):
+                curr_node.data, next_node.data = next_node.data, curr_node.data
+            curr_node = next_node

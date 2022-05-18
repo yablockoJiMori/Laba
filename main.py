@@ -4,6 +4,7 @@ from container import (
     dlist_read_from,
     dlist_write_to,
     dlist_clear,
+    dlist_sort,
     DList
 )
 
@@ -23,6 +24,7 @@ if __name__ == "__main__":
     dlist_read_from(container, input_file)
 
     print("Файл прочитан.")
+    dlist_sort(container)
     dlist_write_to(container, output_file)
 
     dlist_clear(container)
