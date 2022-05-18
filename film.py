@@ -19,6 +19,7 @@ class TypeFilm(Enum):
 class Film:
     def __init__(self):
         self.title = ""
+        self.country = ""
 
         self.key = None
         self.obj = None
@@ -35,16 +36,16 @@ def film_read_from(stream, line):
             film.key = TypeFilm.game_film
             film.obj = GameFilm()
             game_film_read_from(film.obj, stream)
-            return film
 
         case 2:
             film.key = TypeFilm.cartoon
             film.obj = Cartoon()
             cartoon_read_from(film.obj, stream)
-            return film
 
         case _:
             return 0
+    film.country = stream.readline().rstrip("\n")
+    return film
 
 
 def film_write_to(film, stream):
@@ -61,3 +62,5 @@ def film_write_to(film, stream):
 
         case _:
             stream.write("Некорректный фильм!\n")
+
+    stream.write(f"\tСтрана: {film.country}\n")
