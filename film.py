@@ -9,11 +9,17 @@ from Cartoon import (
     cartoon_read_from,
     Cartoon
 )
+from Documentary import (
+    documentary_write_to,
+    documentary_read_from,
+    Documentary
+)
 
 
 class TypeFilm(Enum):
     game_film = 1
     cartoon = 2
+    documentary = 3
 
 
 class Film:
@@ -43,6 +49,12 @@ def film_read_from(stream, line):
             cartoon_read_from(film.obj, stream)
             return film
 
+        case 3:
+            film.key = TypeFilm.documentary
+            film.obj = Documentary()
+            documentary_read_from(film.obj, stream)
+            return film
+
         case _:
             return 0
 
@@ -58,6 +70,11 @@ def film_write_to(film, stream):
             stream.write(f"Мультфильм.\n"
                          f"\tНазвание: {film.title}\n")
             cartoon_write_to(film.obj, stream)
+
+        case TypeFilm.documentary:
+            stream.write(f"Документальный фильм.\n"
+                         f"\tНазвание: {film.title}\n")
+            documentary_write_to(film.obj, stream)
 
         case _:
             stream.write("Некорректный фильм!\n")
