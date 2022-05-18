@@ -22,7 +22,7 @@ if __name__ == "__main__":
     container = DList()
     dlist_read_from(container, input_file)
 
-    print("Файл записан.")
+    print("Файл прочитан.")
     dlist_write_to(container, output_file)
 
     dlist_clear(container)

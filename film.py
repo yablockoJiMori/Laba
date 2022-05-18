@@ -11,8 +11,6 @@ from Cartoon import (
 )
 
 
-
-
 class TypeFilm(Enum):
     game_film = 1
     cartoon = 2
@@ -24,6 +22,7 @@ class Film:
 
         self.key = None
         self.obj = None
+
 
 def film_read_from(stream, line):
     k = int(line)

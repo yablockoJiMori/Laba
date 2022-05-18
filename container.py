@@ -3,6 +3,8 @@ from film import (
     film_read_from,
 
 )
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -14,6 +16,8 @@ class DList:
         self.head = None
         self.tail = None
         self.size = 0
+
+
 def dlist_push_back(dlist: DList, item):
     node = Node(item)
 
@@ -28,6 +32,7 @@ def dlist_push_back(dlist: DList, item):
     dlist.tail = node
 
     dlist.size += 1
+
 
 def dlist_clear(dlist: DList):
     dlist.head = None
