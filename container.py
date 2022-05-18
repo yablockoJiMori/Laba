@@ -61,11 +61,9 @@ def dlist_write_to(dlist: DList, stream):
     current_item = dlist.head
     if dlist.size != 0:
         film_write_to(current_item.data, stream)
-        stream.write(f"\tКоличество гласных: {num_vowels(current_item.data.title)}\n")
         current_item = current_item.next
         while current_item is not dlist.head:
             film_write_to(current_item.data, stream)
-            stream.write(f"\tКоличество гласных: {num_vowels(current_item.data.title)}\n")
             current_item = current_item.next
 
 
@@ -81,3 +79,17 @@ def dlist_sort(dlist: DList):
             if match(curr_node.data, next_node.data):
                 curr_node.data, next_node.data = next_node.data, curr_node.data
             curr_node = next_node
+
+
+def dlist_write_game_film_to(dlist: DList, stream):
+    from film import TypeFilm
+    stream.write("Только игровые фильмы.\n")
+    current_item = dlist.head
+    if dlist.size != 0:
+        if current_item.data.key == TypeFilm.game_film:
+            film_write_to(current_item.data, stream)
+        current_item = current_item.next
+        while current_item is not dlist.head:
+            if current_item.data.key == TypeFilm.game_film:
+                film_write_to(current_item.data, stream)
+            current_item = current_item.next

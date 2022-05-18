@@ -5,6 +5,7 @@ from container import (
     dlist_write_to,
     dlist_clear,
     dlist_sort,
+    dlist_write_game_film_to,
     DList
 )
 
@@ -26,6 +27,7 @@ if __name__ == "__main__":
     print("Файл прочитан.")
     dlist_sort(container)
     dlist_write_to(container, output_file)
+    dlist_write_game_film_to(container, output_file)
 
     dlist_clear(container)
     print("Контейнер отчищен.")
