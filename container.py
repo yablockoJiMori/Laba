@@ -61,9 +61,11 @@ def dlist_write_to(dlist: DList, stream):
     current_item = dlist.head
     if dlist.size != 0:
         film_write_to(current_item.data, stream)
+        stream.write(f"\tКоличество гласных: {num_vowels(current_item.data.title)}\n")
         current_item = current_item.next
         while current_item is not dlist.head:
             film_write_to(current_item.data, stream)
+            stream.write(f"\tКоличество гласных: {num_vowels(current_item.data.title)}\n")
             current_item = current_item.next
 
 
@@ -88,8 +90,10 @@ def dlist_write_game_film_to(dlist: DList, stream):
     if dlist.size != 0:
         if current_item.data.key == TypeFilm.game_film:
             film_write_to(current_item.data, stream)
+            stream.write(f"\tКоличество гласных: {num_vowels(current_item.data.title)}\n")
         current_item = current_item.next
         while current_item is not dlist.head:
             if current_item.data.key == TypeFilm.game_film:
                 film_write_to(current_item.data, stream)
+                stream.write(f"\tКоличество гласных: {num_vowels(current_item.data.title)}\n")
             current_item = current_item.next
