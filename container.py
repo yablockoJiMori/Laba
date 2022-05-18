@@ -56,3 +56,17 @@ def dlist_write_to(dlist: DList, stream):
         while current_item is not dlist.head:
             film_write_to(current_item.data, stream)
             current_item = current_item.next
+
+
+def dlist_write_game_film_to(dlist: DList, stream):
+    from film import TypeFilm
+    stream.write("Только игровые фильмы.\n")
+    current_item = dlist.head
+    if dlist.size != 0:
+        if current_item.data.key == TypeFilm.game_film:
+            film_write_to(current_item.data, stream)
+        current_item = current_item.next
+        while current_item is not dlist.head:
+            if current_item.data.key == TypeFilm.game_film:
+                film_write_to(current_item.data, stream)
+            current_item = current_item.next
