@@ -2,6 +2,8 @@ import sys
 from film import (
     film_write_to,
     film_read_from,
+    check_films,
+    Film
 
 )
 
@@ -122,3 +124,21 @@ def dlist_write_game_film_to(dlist: DList, stream):
                     print(e)
                     sys.exit(1)
             current_item = current_item.next
+
+def dlist_check_films(dlist: DList):
+    film_items = []
+
+    current_node = dlist.head
+    film: Film = current_node.data
+    film_items.append(film)
+    current_node = current_node.next
+    while current_node is not dlist.head:
+        film: Film = current_node.data
+        film_items.append(film)
+        current_node = current_node.next
+
+    film_items_2 = film_items.copy()
+
+    for film_1 in film_items:
+        for film_2 in film_items_2:
+            check_films(film_1, film_2)

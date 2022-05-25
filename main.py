@@ -6,6 +6,7 @@ from container import (
     dlist_clear,
     dlist_sort,
     dlist_write_game_film_to,
+    dlist_check_films,
     DList
 )
 
@@ -32,8 +33,10 @@ if __name__ == "__main__":
 
     container = DList()
     dlist_read_from(container, input_file)
-
+    dlist_write_to(container, output_file)
     print("Файл прочитан.")
+    dlist_check_films(container)
+    print("Сравнение завершено")
     dlist_sort(container)
     dlist_write_to(container, output_file)
     dlist_write_game_film_to(container, output_file)

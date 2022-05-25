@@ -116,3 +116,60 @@ def film_write_to(film, stream):
         print("Ошибка записи страны в файл!")
         print(e)
         sys.exit(1)
+
+
+def check_films(film_1, film_2):
+    match film_1.obj, film_2.obj:
+        case GameFilm(), GameFilm():
+            print("Фильмы из одной категории.")
+            print("Категория - первый фильм: Игровой, второй фильм: Игровой")
+            print(f"Название - первый фильм: {film_1.title}, второй фильм: {film_2.title}")
+            print()
+
+        case GameFilm(), Cartoon():
+            print("Фильмы из разных категорий.")
+            print("Категория - первый фильм: Игровой, второй фильм: Мультфильм")
+            print(f"Название - первый фильм: {film_1.title}, второй фильм: {film_2.title}")
+            print()
+
+        case GameFilm(), Documentary():
+            print("Фильмы из разных категорий.")
+            print("Категория - первый фильм: Игровой, второй фильм: Документальный")
+            print(f"Название - первый фильм: {film_1.title}, второй фильм: {film_2.title}")
+            print()
+
+        case Cartoon(), GameFilm():
+            print("Фильмы из разных категорий.")
+            print("Категория - первый фильм: Мультфильм, второй фильм: Игровой")
+            print(f"Название - первый фильм: {film_1.title}, второй фильм: {film_2.title}")
+            print()
+
+        case Cartoon(), Cartoon():
+            print("Фильмы из одной категории.")
+            print("Категория - первый фильм: Мультфильм, второй фильм: Мультфильм")
+            print(f"Название - первый фильм: {film_1.title}, второй фильм: {film_2.title}")
+            print()
+
+        case Cartoon(), Documentary():
+            print("Фильмы из разных категорий.")
+            print("Категория - первый фильм: Мультфильм, второй фильм: Документальный")
+            print(f"Название - первый фильм: {film_1.title}, второй фильм: {film_2.title}")
+            print()
+
+        case Documentary(), GameFilm():
+            print("Фильмы из разных категорий.")
+            print("Категория - первый фильм: Документальный, второй фильм: Игровой")
+            print(f"Название - первый фильм: {film_1.title}, второй фильм: {film_2.title}")
+            print()
+
+        case Documentary(), Cartoon():
+            print("Фильмы из разных категорий.")
+            print("Категория - первый фильм: Документальный, второй фильм: Мультфильм")
+            print(f"Название - первый фильм: {film_1.title}, второй фильм: {film_2.title}")
+            print()
+
+        case Documentary(), Documentary():
+            print("Фильмы из одной категории.")
+            print("Категория - первый фильм: Документальный, второй фильм: Документальный")
+            print(f"Название - первый фильм: {film_1.title}, второй фильм: {film_2.title}")
+            print()
