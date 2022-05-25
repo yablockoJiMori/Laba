@@ -1,3 +1,4 @@
+import sys
 from enum import Enum
 
 
@@ -13,7 +14,13 @@ class WayToCreate(Enum):
 
 
 def cartoon_read_from(film: Cartoon, stream):
-    k = int(stream.readline())
+    try:
+        k = int(stream.readline())
+    except Exception as e:
+        stream.close()
+        print("Ошибка преобразования типа объекта!")
+        print(e)
+        sys.exit(1)
 
     match k:
         case WayToCreate.drawn.value:
@@ -23,11 +30,19 @@ def cartoon_read_from(film: Cartoon, stream):
         case WayToCreate.plasticine.value:
             film.way_to_create = WayToCreate.plasticine
         case _:
-            return 0
+            stream.close()
+            print("Ошибка ключа типа данных!")
+            sys.exit(1)
 
 
 def cartoon_write_to(film: Cartoon, stream):
-    k = film.way_to_create
+    try:
+        k = film.way_to_create
+    except Exception as e:
+        stream.close()
+        print("Ошибка преобразования типа объекта!")
+        print(e)
+        sys.exit(1)
     stream.write(f"\tСпособ создания: ")
     match k:
         case WayToCreate.drawn:
@@ -37,5 +52,7 @@ def cartoon_write_to(film: Cartoon, stream):
         case WayToCreate.plasticine:
             stream.write(f"Пластилиновый\n")
         case _:
-            return 0
+            stream.close()
+            print("Ошибка ключа типа данных!")
+            sys.exit(1)
 

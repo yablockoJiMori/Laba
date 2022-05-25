@@ -12,12 +12,21 @@ from container import (
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("incorrect command line! \n"
-              "Waited: command in_file out_file")
+        print("Ошибка. Ожидалось принять файлы ввода и вывода.")
         sys.exit(1)
 
-    input_file = open(sys.argv[1], "r", encoding="utf-8")
-    output_file = open(sys.argv[2], "w", encoding="utf-8")
+    try:
+        input_file = open(sys.argv[1], "r", encoding="utf-8")
+    except OSError:
+        print(f"Ошибка открытия файла {sys.argv[1]}")
+        sys.exit(1)
+
+    try:
+        output_file = open(sys.argv[2], "w", encoding="utf-8")
+    except OSError:
+        input_file.close()
+        print(f"Ошибка открытия файла {sys.argv[2]}")
+        sys.exit(1)
 
     print("Старт")
 

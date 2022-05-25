@@ -1,11 +1,26 @@
+import sys
+
+
 class GameFilm:
     def __init__(self):
         self.director = ""
 
 
 def game_film_read_from(film: GameFilm, stream):
-    film.director = stream.readline().rstrip("\n")
+    try:
+        film.director = stream.readline().rstrip("\n")
+    except Exception as e:
+        stream.close()
+        print("Ошибка чтения игрового фильма!")
+        print(e)
+        sys.exit(1)
 
 
 def game_film_write_to(film: GameFilm, stream):
-    stream.write(f"\tРежиссер: {film.director}\n")
+    try:
+        stream.write(f"\tРежиссер: {film.director}\n")
+    except Exception as e:
+        stream.close()
+        print("Ошибка записи игрового фильма!")
+        print(e)
+        sys.exit(1)
